@@ -4,16 +4,20 @@
   "description": "",
   "main": "./src/main.ts",
   "scripts": {
-    "start": "vite"
+    "start": "vite",
+    "build": "vite build"
   },
   "private": true,
   "dependencies": {
     "vue-router": "^4.3.0",
-    "@dog/vue-config": "workspace:^"
+    "@dog/vue-config": "workspace:^",
+    "vuetify": "^3.5.14"
   },
   "devDependencies": {
+    "@mdi/font": "^7.4.47",
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-router": "^0.8.6",
-    "vite-plugin-vue-layouts": "^0.11.0"
+    "vite-plugin-vue-layouts": "^0.11.0",
+    "vite-plugin-vuetify": "^2.0.3"
   }
 }
