@@ -1,11 +1,12 @@
 {
   "name": "tool",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "scripts": {
     "bootstrap": "pnpm i",
     "dev:dmain": "pnpm -F dvs-main dev",
-    "start-build-app": "ts-node server/buildApp/index.ts"
+    "start-build-app": "ts-node server/buildApp/index.ts",
+    "release": "standard-version"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
   "devDependencies": {
     "@types/node": "^20.11.30",
     "@vitejs/plugin-vue": "^5.0.4",
+    "standard-version": "^9.5.0",
     "ts-node": "^10.9.2",
     "turbo": "^1.13.0",
     "typescript": "^5.4.3",
