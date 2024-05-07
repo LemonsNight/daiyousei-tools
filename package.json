@@ -1,0 +1,26 @@
+{
+  "name": "tool",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "bootstrap": "pnpm i",
+    "dev:dmain": "pnpm -F dvs-main dev",
+    "start-build-app": "ts-node server/buildApp/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@dog/eslint-config": "workspace:^",
+    "vue": "^3.4.22"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "ts-node": "^10.9.2",
+    "turbo": "^1.13.0",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.6",
+    "vue-tsc": "^2.0.7"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@dog/eslint-config",
+  "version": "1.0.0",
+  "description": "eslint配置",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
+    "eslint-define-config": "^2.1.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "prettier": "^3.0.3"
+  }
+}
