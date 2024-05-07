@@ -19,24 +19,13 @@
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
       </v-app-bar>
-      <v-main>
-        <v-container fluid>
+      <v-main class="mt-2">
+        <v-container>
           <v-row>
             <v-col v-for="item in list" :key="item" cols="12">
-              <v-card :title="item">
-                <v-card-actions>
-                  <v-btn
-                    color="orange"
-                    text="启动服务"
-                    @click="handleStart"
-                  ></v-btn>
-                  <v-btn
-                    color="orange"
-                    text="关闭服务"
-                    @click="handleClose"
-                  ></v-btn>
-                </v-card-actions>
-              </v-card>
+              <router-link :to="item.link" tag="v-btn">
+                {{ item.title }}
+              </router-link>
             </v-col>
           </v-row>
         </v-container>
@@ -45,7 +34,10 @@
   </v-card>
 </template>
 <script setup lang="ts">
-const list = ['dvs-main', 'dvs-cons', 'dvs-ffp', 'dvs-base']
+const list = [
+  { link: 'http://localhost:8001/#/components/form', title: '表单示例' },
+  { link: 'http://localhost:8001/#/components/table', title: '表格示例' },
+]
 const handleStart = () => {}
 const handleClose = () => {}
 </script>
