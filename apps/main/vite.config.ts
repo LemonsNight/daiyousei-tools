@@ -5,13 +5,22 @@ import VueRouter from 'unplugin-vue-router/vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import AutoImport from 'unplugin-auto-import/vite'
 import { fileURLToPath, URL } from 'node:url'
+import { getArticle } from './vitePlugins/getArticleJson'
 export default defineConfig({
   plugins: [
     VueRouter({
-      exclude: ['**/components/**', '**/api/**', '**/static/**'],
+      exclude: [
+        '**/components/**',
+        '**/api/**',
+        '**/static/**',
+        '**/article/**',
+        '**/hooks/**',
+        '**/utils/**',
+      ],
     }),
     Layouts(),
     vue(),
+    getArticle(),
     Vuetify({
       autoImport: true,
     }),

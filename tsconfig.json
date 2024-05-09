@@ -5,6 +5,9 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "moduleResolution": "node",
+    "paths": {
+      "@/*": ["src/**"]
+    }
   },
   "include": [
     "**/**.ts",
