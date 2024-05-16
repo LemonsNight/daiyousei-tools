@@ -1,5 +1,5 @@
 {
-  "name": "auto-ui",
+  "name": "lemon-theme",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,9 +10,5 @@
     "type": "git",
     "url": "https://github.com/LemonsNight/-daiyousei-tools.git"
   },
-  "private": true,
-  "dependencies": {
-    "puppeteer": "^22.8.1",
-    "puppeteer-core": "^22.8.1"
-  }
+  "private": true
 }
