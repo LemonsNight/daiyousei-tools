@@ -1,6 +1,6 @@
 import { defineConfigWithTheme } from 'vitepress'
 import fixKatex from './fix-katex'
-import { BUILD } from '../build/build-config'
+// import { BUILD } from '../build/build-config'
 export interface ThemeConfig {
   name?: string
   cover?: string
@@ -11,7 +11,7 @@ export interface ThemeConfig {
 }
 export default defineConfigWithTheme<ThemeConfig>({
   lang: 'zh-CN',
-  base: `/${BUILD.base}/`,
+  base: '/daiyousei-tools/',
   // from https://codybontecou.com/tailwindcss-with-vitepress.html
   head: [
     // 字体支持
@@ -61,7 +61,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         href: 'https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css',
       },
     ],
-    ['link', { rel: 'icon', href: `/${BUILD.base}/dog.png` }],
+    ['link', { rel: 'icon', href: `dog.png` }],
   ],
   markdown: {
     theme: 'github-light',
@@ -72,7 +72,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   },
   themeConfig: {
     name: 'flaribbit',
-    cover: `/${BUILD.base}/60651947_p0.jpg`,
+    cover: `/daiyousei-tools/60651947_p0.jpg`,
     social: [
       { icon: 'fa-github', url: 'https://github.com' },
       { icon: 'fa-twitter', url: 'https://twitter.com' },

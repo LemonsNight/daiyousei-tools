@@ -1,4 +1,4 @@
 export const BUILD = {
-  base: 'dist',
+  base: './',
 }
 Object.freeze(BUILD)
