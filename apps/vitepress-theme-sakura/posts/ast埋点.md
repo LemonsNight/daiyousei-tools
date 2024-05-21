@@ -3,6 +3,7 @@ title: 使用ast实现uniapp埋点
 tags: [uniapp, 前端]
 cover: /vitepress-theme-sakura/60651947_p0.jpg
 ---
+
 ## 前言
 
 最近接到埋点需求，需要对Uni项目的App端和小程序进行埋点。经过研究社区提供的方案后，发现并没有一个完全符合公司业务需求的方案。因此，决定自己动手实现一个定制化的埋点方案。

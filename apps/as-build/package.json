@@ -1,0 +1,21 @@
+{
+  "name": "as-build",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LemonsNight/-daiyousei-tools.git"
+  },
+  "private": true,
+  "devDependencies": {
+    "electron": "^30.0.6"
+  },
+  "dependencies": {
+    "get-installed-apps": "^1.1.0",
+    "json5": "^2.2.3"
+  }
+}

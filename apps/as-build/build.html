@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>UNI离线打包工具</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+<body>
+<!--  请注意id都是绑定js的，修改后请全局替换-->
+  <main>
+    <form id="myForm">
+      <div>
+        <label for="root-project-text">项目：</label>
+        <input id="root-project-text"></input>
+        <button id="root-project">选择UNI项目根目录</button>
+      </div>
+
+      <hr />
+      <div>
+        <label for="root-as-text">编辑器：</label>
+        <input id="root-as-text"></input>
+        <button id="root-as">手动选择AS编辑器根目录</button>
+        <button id="auto-as">自动检测目录</button>
+        <p>
+          <b>PS:该检测为扫描注册表里的应用，注册表的应用url如果和实际不符还请手动选择目录</b>
+        </p>
+      </div>
+
+      <hr />
+      <div>
+        <label for="root-project-script">package 脚本：</label>
+        <select id="root-project-script">
+        </select>
+      </div>
+
+      <hr />
+
+      <div>
+        <label for="root-project-sdk">SDK项目：</label>
+        <select id="root-project-sdk">
+        </select>
+      </div>
+
+      <hr />
+
+      <button id="submit">执行打包脚本</button>
+    </form>
+  </main>
+
+  <script src="build.js"></script>
+</body>
+</html>
