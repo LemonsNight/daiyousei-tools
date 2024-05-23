@@ -41,7 +41,6 @@ const createWindow = async () => {
             event.reply(`${v}-script`, packageJson.scripts)
 
             fs.readdir(`${filePath}/apps`, {}, (error, files) => {
-              console.log('files', files)
               event.reply(`${v}-sdk`, files)
             })
           }
