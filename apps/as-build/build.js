@@ -1,5 +1,5 @@
 const { ipcRenderer } = require('electron')
-const { spawn } = require('child_process')
+import { execa } from 'execa'
 
 const constant = require('./constant')
 const { getInstalledApps } = require('get-installed-apps')
@@ -50,43 +50,47 @@ document.getElementById('auto-as').addEventListener('click', (event) => {
 })
 
 document.getElementById('submit').addEventListener('click', () => {
+  // 要执行的命令
+  // 生成新的cmd窗口并执行命令
   const formData = {
     project: document.getElementById('root-project-text').value,
     editor: document.getElementById('root-as-text').value,
     packageScript: document.getElementById('root-project-script').value,
     sdkProject: document.getElementById('root-project-sdk').value,
   }
-  // 执行UNI打包脚本
-  const pnpm = spawn('pnpm', [formData.packageScript], {
+  execa('pnpm', [formData.packageScript], {
     cwd: formData.project,
-    timeout: 60 * 1000,
-    stdio: 'inherit',
-    shell: true,
-  })
-  // 杀死进程并且取消监听事件
-  const handleKill = () => {
-    pnpm.kill()
-    document
-      .getElementById('submit-kill')
-      .removeEventListener('click', handleKill)
-  }
-  document.getElementById('submit-kill').addEventListener('click', handleKill)
-
-  pnpm.stdout.on('data', (data) => {
-    console.log(`stdout: ${data}`)
-  })
-
-  pnpm.stderr.on('data', (data) => {
-    console.error(`stderr: ${data}`)
-  })
-
-  pnpm.on('close', (code) => {
-    console.log(`child process exited with code ${code}`)
-    handleKill()
-  })
-
-  pnpm.on('error', (err) => {
-    console.error(`Error occurred: ${err}`)
-    handleKill()
-  })
+  }).then(async (e) => {})
+  // // 执行UNI打包脚本
+  // const pnpm = spawn('pnpm', [formData.packageScript], {
+  //   cwd: formData.project,
+  //   timeout: 60 * 1000,
+  //   stdio: 'inherit',
+  //   shell: true,
+  // })
+  // // // 杀死进程并且取消监听事件
+  // const handleKill = () => {
+  //   console.log('杀死了进程')
+  //   pnpm.kill()
+  //   document
+  //     .getElementById('submit-kill')
+  //     .removeEventListener('click', handleKill)
+  // }
+  // document.getElementById('submit-kill').addEventListener('click', handleKill)
+  //
+  // pnpm.stdout.on('data', (data) => {
+  //   console.log(`stdout: ${data}`)
+  // })
+  //
+  // pnpm.stderr.on('data', (data) => {
+  //   console.error(`stderr: ${data}`)
+  // })
+  //
+  // pnpm.on('close', (code) => {
+  //   handleKill()
+  // })
+  //
+  // pnpm.on('error', (err) => {
+  //   handleKill()
+  // })
 })

@@ -12,9 +12,11 @@
   },
   "private": true,
   "devDependencies": {
-    "electron": "^30.0.6"
+    "electron": "^30.0.6",
+    "electron-reloader": "^1.2.3"
   },
   "dependencies": {
+    "execa": "^9.1.0",
     "get-installed-apps": "^1.1.0",
     "json5": "^2.2.3"
   }
