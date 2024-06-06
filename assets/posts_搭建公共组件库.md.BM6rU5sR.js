@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as s}from"./chunks/framework.DjX62oqG.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"posts/搭建公共组件库.md","filePath":"posts/搭建公共组件库.md"}'),a={name:"posts/搭建公共组件库.md"};function o(r,_,c,n,p,d){return s(),e("div")}const f=t(a,[["render",o]]);export{m as __pageData,f as default};

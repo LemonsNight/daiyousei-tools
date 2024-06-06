@@ -3,12 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>404 | S u z u k a</title>
-    <meta name="description" content="Not Found">
+    <title>Actions自动部署 | S u z u k a</title>
+    <meta name="description" content="A VitePress site">
     <meta name="generator" content="VitePress v1.0.0-rc.36">
     <link rel="preload stylesheet" href="/daiyousei-tools/assets/style.BG5HTpz2.css" as="style">
     
     <script type="module" src="/daiyousei-tools/assets/app.D7o_u-hK.js"></script>
+    <link rel="modulepreload" href="/daiyousei-tools/assets/chunks/theme.CORvCagi.js">
+    <link rel="modulepreload" href="/daiyousei-tools/assets/chunks/framework.DjX62oqG.js">
+    <link rel="modulepreload" href="/daiyousei-tools/assets/posts_Actions自动部署.md.Dce5Y3-4.lean.js">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/regular.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC">
@@ -21,7 +24,7 @@
     <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
   </head>
   <body>
-    <div id="app"><!--[--><header><span class="brand"></span><span class="container"><span class="menu"><ul><!--[--><li><a href="/daiyousei-tools/"><span><i class="fa fa-home"></i> 首页</span></a></li><li><a href="/daiyousei-tools/tags/"><span><i class="fa fa-tag"></i> 标签</span></a></li><li><a href="/daiyousei-tools/readme.html"><span><i class="fa fa-leaf"></i> 关于</span></a></li><!--]--></ul></span></span><span class="other"><a class="search"><i class="fa fa-search"></i></a></span></header><aside></aside><main><a href="#" class="totop" style="top:-900px;" aria-label="to-top"></a><!--[--><!----><div class="article"><div style="position:relative;" class="content">custom 404</div><div class="content nav"><span><a href=""><i class="fa fa-angle-left"></i> </a></span><span><a href=""> <i class="fa fa-angle-right"></i></a></span></div><!----><div class="toc"><ol><!--[--><!--]--></ol></div></div><!--]--></main><!--]--></div>
+    <div id="app"><!--[--><header><span class="brand"></span><span class="container"><span class="menu"><ul><!--[--><li><a href="/daiyousei-tools/"><span><i class="fa fa-home"></i> 首页</span></a></li><li><a href="/daiyousei-tools/tags/"><span><i class="fa fa-tag"></i> 标签</span></a></li><li><a href="/daiyousei-tools/readme.html"><span><i class="fa fa-leaf"></i> 关于</span></a></li><!--]--></ul></span></span><span class="other"><a class="search"><i class="fa fa-search"></i></a></span></header><aside></aside><main><a href="#" class="totop" style="top:-900px;" aria-label="to-top"></a><!--[--><!----><div class="article"><div style="position:relative;" class="content"><div><h2 id="前言" tabindex="-1">前言 <a class="header-anchor" href="#前言" aria-label="Permalink to &quot;前言&quot;">​</a></h2><p>小Q这个时候还没开始实现，属于边写边做边踩坑，之前也做个 blog ，不过并没有使用自动化部署，现在就来实现这个吧。路漫漫其修远兮，吾将上下而求索</p><h2 id="大致实现" tabindex="-1">大致实现 <a class="header-anchor" href="#大致实现" aria-label="Permalink to &quot;大致实现&quot;">​</a></h2><p>目前想法是，打包之后，将打包出来的dist 推送到专门用来展示 blog 的分支，或者由github上面自带的工作流执行命令进行打包并推送到指定分支，然后更新版本号。</p><p>不知道是否能支持，估计不可以，反正都试试吧，</p><h2 id="实现过程" tabindex="-1">实现过程 <a class="header-anchor" href="#实现过程" aria-label="Permalink to &quot;实现过程&quot;">​</a></h2><p>先在github上面找个好看的项目改造下 当前目录结构: <img src="https://github.com/LemonsNight/daiyousei-tools/blob/blog/apps/vitepress-theme-sakura/public/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_17176437986462.png?raw=true" alt="当前项目截图"></p></div></div><div class="content nav"><span><a href=""><i class="fa fa-angle-left"></i> </a></span><span><a href=""> <i class="fa fa-angle-right"></i></a></span></div><!----><div class="toc"><ol><!--[--><!--]--></ol></div></div><!--]--></main><!--]--></div>
     <script>window.__VP_HASH_MAP__=JSON.parse("{\"index.md\":\"DJW46x8r\",\"posts_actions自动部署.md\":\"Dce5Y3-4\",\"posts_pnpm源码理解.md\":\"CWBssiQU\",\"posts_react源码理解.md\":\"DDzfjIcj\",\"posts_webpack工程化.md\":\"DXOeoAZ6\",\"posts_前端适配方案.md\":\"BDzrrrs1\",\"posts_搭建公共组件库.md\":\"BM6rU5sR\",\"posts_ast埋点.md\":\"CTYV0xNF\",\"posts_前端自动部署方案.md\":\"hj6TTXUr\",\"posts_微前端工程化.md\":\"CM8qyBza\",\"posts_前端性能优化.md\":\"CZbf-KHK\",\"readme.md\":\"C45owkNe\",\"posts_文档工程化.md\":\"CO8Dv0SJ\",\"posts_实现虚拟列表.md\":\"DQ0Xs1jJ\",\"posts_vite工程化.md\":\"BVZ-ckR5\",\"tags_index.md\":\"7ReVj_zv\",\"posts_vue源码理解.md\":\"BoN4eb78\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"zh-CN\",\"dir\":\"ltr\",\"title\":\"S u z u k a\",\"description\":\"A VitePress site\",\"base\":\"/daiyousei-tools/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"name\":\"flaribbit\",\"cover\":\"/daiyousei-tools/60651947_p0.jpg\",\"social\":[{\"icon\":\"fa-github\",\"url\":\"https://github.com\"},{\"icon\":\"fa-twitter\",\"url\":\"https://twitter.com\"},{\"icon\":\"fa-weibo\",\"url\":\"https://weibo.com\"}],\"waline\":\"https://blog-waline-e7jqcxb9s-flaribbit.vercel.app/\"},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
     
   </body>

@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as s}from"./chunks/framework.DjX62oqG.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"posts/前端自动部署方案.md","filePath":"posts/前端自动部署方案.md"}'),a={name:"posts/前端自动部署方案.md"};function o(_,r,c,n,p,d){return s(),e("div")}const f=t(a,[["render",o]]);export{m as __pageData,f as default};
