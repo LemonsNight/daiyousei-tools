@@ -1,6 +1,5 @@
 import { defineConfigWithTheme } from 'vitepress'
 import fixKatex from './fix-katex'
-// import { BUILD } from '../build/build-config'
 export interface ThemeConfig {
   name?: string
   cover?: string

@@ -17,123 +17,116 @@ cover: /vitepress-theme-sakura/60651947_p0.jpg
 ##
 
 ```vue
-由于小程序端以及app端并没有window，所以需要使用混入的方式
-// utils.ts
-export const 你的埋点函数 = {
-  methods: {
-    sendMd: (code: string) => {
-    // ... 处理你的业务
-      uni.$emit("sendMd", code);
-    }
-  }
-};
-
-APP.VUE
-export const createApp = () => {
-   // ***
-  app.mixin('你的埋点函数');
-  return { app, Pinia };
-};
+由于小程序端以及app端并没有window，所以需要使用混入的方式 // utils.ts export
+const 你的埋点函数 = { methods: { sendMd: (code: string) => { // ...
+处理你的业务 uni.$emit("sendMd", code); } } }; APP.VUE export const createApp =
+() => { // *** app.mixin('你的埋点函数'); return { app, Pinia }; };
 ```
+
 pages.vue
+
 ```vue
-
 <template>
-    <view>
-        <view @click=test data-md="code1">
-                // ....
-        </view>
-    </view>
+  <view>
+    <view @click="test" data-md="code1"> // .... </view>
+  </view>
 </template>
-
 ```
-inject-click-handler.ts vite插件
-```ts
 
-import { parse } from "vue/compiler-sfc";
-import { Plugin } from "vite";
+inject-click-handler.ts vite插件
+
+```ts
+import { parse } from 'vue/compiler-sfc'
+import { Plugin } from 'vite'
 
 export default (): Plugin => {
   return {
-    name: "inject-click-handler",
+    name: 'inject-click-handler',
     transform(code, id) {
       try {
-        if (!/.vue$/.test(id)) return null;
-        const parseCode = parse(code);
-        if (!parseCode) return null;
-        if (!parseCode.descriptor?.template?.content) return null;
-        const dataMdRegex = /<[^>]*\bdata-md="([^"]*)"[^>]*>/g; // 匹配data-md，这里需要根据业务进行调整。
+        if (!/.vue$/.test(id)) return null
+        const parseCode = parse(code)
+        if (!parseCode) return null
+        if (!parseCode.descriptor?.template?.content) return null
+        const dataMdRegex = /<[^>]*\bdata-md="([^"]*)"[^>]*>/g // 匹配data-md，这里需要根据业务进行调整。
         // 匹配当前文件是否有埋点标识，在继续往下遍历ast
-        const { content, ast } = parseCode.descriptor.template;
+        const { content, ast } = parseCode.descriptor.template
         // 返回null的时候表示不修改任何代码
         if (!content.match(dataMdRegex)) {
-          return null;
+          return null
         }
         // 获取template模板
-        let $code = parseCode.descriptor.template.content;
+        let $code = parseCode.descriptor.template.content
         // 需要修改的节点数组
-        const nodeArray = [];
+        const nodeArray = []
         // 递归ast节点
         const handleEachAst = (node) => {
           if (node?.props.length) {
-             // 查找我们在页面写的data-md
+            // 查找我们在页面写的data-md
             const isMd = node?.props?.find(
               (item) =>
-                item?.name === "data-md" ||
-                (item.name === "bind" && item?.arg?.content === "data-md")
-            );
+                item?.name === 'data-md' ||
+                (item.name === 'bind' && item?.arg?.content === 'data-md'),
+            )
             // 查找当前元素是否有点击函数并追加混入的埋点函数
             if (!!isMd) {
               const findVueClickEvent = node?.props?.find(
-                (item) => item.name === "on" && item.type === 7
-              );
-              let pushFn = "";
+                (item) => item.name === 'on' && item.type === 7,
+              )
+              let pushFn = ''
               const mdContent =
-                isMd.name === "data-md" ? `'${isMd.value.content}'` : isMd.exp.content;
+                isMd.name === 'data-md'
+                  ? `'${isMd.value.content}'`
+                  : isMd.exp.content
               if (findVueClickEvent) {
-                 // 检查是否一个函数   sendMd是混入的埋点函数
-                const isFunctionCall = /^\s*[a-zA-Z_$][0-9a-zA-Z_$]*\s*([^)]*)\s*$/;
+                // 检查是否一个函数   sendMd是混入的埋点函数
+                const isFunctionCall =
+                  /^\s*[a-zA-Z_$][0-9a-zA-Z_$]*\s*([^)]*)\s*$/
                 if (!isFunctionCall.test(findVueClickEvent.exp.content)) {
-                  findVueClickEvent.exp.content += "()";
+                  findVueClickEvent.exp.content += '()'
                 }
-                pushFn = `@${findVueClickEvent.arg.content}="sendMd('sendMd',${mdContent});${findVueClickEvent.exp.content}"`;
+                pushFn = `@${findVueClickEvent.arg.content}="sendMd('sendMd',${mdContent});${findVueClickEvent.exp.content}"`
               } else {
-                pushFn = `@click="sendMd('sendMd',${mdContent})"`;
+                pushFn = `@click="sendMd('sendMd',${mdContent})"`
               }
-              const nodeStr = node.loc.source.replace(findVueClickEvent.loc.source, pushFn);
+              const nodeStr = node.loc.source.replace(
+                findVueClickEvent.loc.source,
+                pushFn,
+              )
               nodeArray.push({
                 source: node.loc.source,
-                replaceSource: nodeStr
-              });
+                replaceSource: nodeStr,
+              })
             }
           }
           if (Array.isArray(node?.children)) {
             node.children.forEach((item) => {
-              item.props && handleEachAst(item);
-            });
+              item.props && handleEachAst(item)
+            })
           }
 
           if (nodeArray.length) {
             nodeArray.forEach((item) => {
-              $code = $code.replace(item.source, item.replaceSource);
-            });
+              $code = $code.replace(item.source, item.replaceSource)
+            })
           }
-        };
+        }
 
-        handleEachAst(ast);
+        handleEachAst(ast)
         return {
-          code: code.replace(parseCode.descriptor.template.content, $code)
-        };
+          code: code.replace(parseCode.descriptor.template.content, $code),
+        }
       } catch (e) {
-        return null;
+        return null
       }
-    }
-  };
-};
+    },
+  }
+}
 ```
-vite.config.js
-```ts
 
+vite.config.js
+
+```ts
 plugins: [
   InjectClickHandler(), // 必须写在uniPlugin前面
   uniPlugin,
