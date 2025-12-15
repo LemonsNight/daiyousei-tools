@@ -3,5 +3,8 @@ function useToggle(initial = false) {
   const toggle = () => state = !state;
   return { state, toggle };
 }
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
 
-export { useToggle };
+export { clamp, useToggle };
