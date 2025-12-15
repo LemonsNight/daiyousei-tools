@@ -7,13 +7,23 @@
   "scripts": {
     "build": "pnpm -r build",
     "dev": "pnpm -r dev",
-    "release": "pnpm changeset version && pnpm build && pnpm publish -r"
+    "release": "pnpm changeset version && pnpm build && pnpm publish -r",
+    "prepare": "husky install",
+    "changeset": "changeset",
+    "changeset-add": "changeset add",
+    "changeset-version": "changeset version",
+    "changeset-publish": "changeset publish",
+    "commitlint": "commitlint --from=HEAD~1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@changesets/cli": "catalog:",
+    "@commitlint/cli": "catalog:",
+    "@commitlint/config-conventional": "catalog:",
+    "commitizen": "catalog:",
+    "cz-conventional-changelog": "catalog:",
     "husky": "catalog:",
     "typescript": "catalog:",
     "unbuild": "catalog:"
@@ -22,5 +32,10 @@
     "node": ">=20.10.0",
     "pnpm": ">=9.12.0"
   },
-  "packageManager": "pnpm@10.25.0"
+  "packageManager": "pnpm@10.25.0",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
